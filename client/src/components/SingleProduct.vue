@@ -1,15 +1,15 @@
 <template>
-    <div className='product'>
+    <div class='product'>
         <h3>{{ product.name }}</h3>
-        <p className="price">{{ product.price.toFixed(2)}}</p>
-        <div className="actions">
+        <p class="price">{{ product.price.toFixed(2)}}</p>
+        <div class="actions">
             <!-- Link to product details page -->
-<!--             <router-link :to="{ name: 'product-details', params: { id: product.id } }">
-                <unicon name="eye" fill="royalblue" />
-            </router-link> -->
+            <router-link :to="{ name: 'showProduct', params: { id: product.id } }">
+                <unicon name="eye" class="icon" />
+            </router-link>
 
             <!-- Delete product -->
-            <unicon name="multiply" fill="lightgrey" @click="onDelete(product.id)"/>
+            <unicon name="multiply" class="icon" fill="lightgrey" @click="onDelete(product.id)"/>
 
             <!-- Link to edit product page -->
 <!--             <router-link :to="{ name: 'edit-product', params: { id: product.id } }">
@@ -21,8 +21,6 @@
 <script>
 export default {
   props: ['product'],
-  components: {
-  },
   methods: {
     onDelete (id) {
       // Handle delete action
