@@ -9,6 +9,9 @@ module.exports = (connex, Sequelize) => {
         price: {
             type: Sequelize.REAL
         },
+        photo: {
+            type: Sequelize.STRING
+        },
         category: {
             type: Sequelize.STRING
         }

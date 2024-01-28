@@ -38,6 +38,14 @@
                 v-model="product.category"
                 />
             </div>
+            <div>
+              <label>Photo</label>
+              <input
+                type="file"
+                accept="image/*"
+                @change="handleFileUpload"
+              />
+            </div>
             <input type="button" @click="saveProduct" value="save" class="modal-button white-text"/>
         </form>
     </div>

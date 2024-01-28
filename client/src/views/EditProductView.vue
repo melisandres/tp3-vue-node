@@ -1,6 +1,11 @@
 <template>
     <div class="custom-modal-container">
         <div class="modal">
+        <header>
+            <router-link to="/">
+                <unicon name="multiply" fill="lightgrey" class="close-modal"/>
+            </router-link>
+        </header>
           <form>
               <div>
                   <label>Product</label>
@@ -40,6 +45,19 @@
               </div>
               <input type="button" @click="updateProduct" value="update" class="modal-button white-text"/>
           </form>
+          <hr/>
+          <div class='info'>
+              <h5>previously saved product information:</h5>
+              <h4>
+                  {{ product.name }}
+              </h4>
+              <p>
+                  $ {{ product.price }}
+              </p>
+              <p>
+                  {{ product.description }}
+              </p>
+          </div>
       </div>
     </div>
   </template>
