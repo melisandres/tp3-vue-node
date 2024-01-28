@@ -14,7 +14,8 @@
     :removeInv="removeInventory"
     />
     <ProductsSection
-    :inventory="inventory"/>
+    :inventory="inventory"
+    :removeInv="removeInventory"/>
     <MainFooter/>
   </div>
 </template>
@@ -50,8 +51,12 @@ export default {
       this.inventory[index].description = data.description
       this.inventory[index].type = data.type
     },
-    removeInventory (index) {
-      this.inventory.splice(index, 1)
+    removeInventory (id) {
+      console.log('this id is ', id)
+      const position = this.inventory.findIndex(item => item.id === id)
+      if (position !== -1) {
+        this.inventory.splice(position, 1)
+      }
     }
   }
 }

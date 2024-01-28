@@ -12,8 +12,8 @@
                 <p class='description'> {{ product.description }} </p>
                 <!-- Other product details -->
                 <footer>
-               <router-link class="modal-button" :to="`/edit/${product.id}`">Modify</router-link>
-                    <span class="modal-button" @click="() => deleteAndClose(product.id)">Delete</span>
+                    <router-link class="modal-button" :to="`/edit/${product.id}`">Modify</router-link>
+                    <span class="modal-button" @click="deleteProduct">Delete</span>
                 </footer>
             </div>
             <div v-else>
@@ -23,12 +23,24 @@
     </div>
 </template>
 <script>
-// import ProductDataService from '@/services/ProductDataService'
+import ProductDataService from '@/services/ProductDataService'
 export default {
-  props: ['inventory'],
+  props: ['inventory', 'removeInv'],
   data () {
     return {
       id: parseInt(this.$route.params.id)
+    }
+  },
+  methods: {
+    deleteProduct () {
+      ProductDataService.delete(this.id)
+        .then(response => {
+          this.removeInv(this.id)
+          this.$router.push({ name: 'home' })
+        })
+        .catch((e) => {
+          this.message = e.response.data.message
+        })
     }
   },
   computed: {

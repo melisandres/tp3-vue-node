@@ -9,7 +9,7 @@
             </router-link>
 
             <!-- Delete product -->
-            <unicon name="multiply" class="icon" @click="onDelete(product.id)"/>
+            <unicon name="multiply" class="icon" @click="deleteProduct(product.id)"/>
 
             <!-- Link to edit product page -->
             <router-link :to="{ name: 'editProduct', params: { id: product.id } }">
@@ -19,12 +19,23 @@
     </div>
 </template>
 <script>
+import ProductDataService from '@/services/ProductDataService'
 export default {
-  props: ['product'],
+  props: ['product', 'removeInv'],
+  data () {
+    return {
+      message: null
+    }
+  },
   methods: {
-    onDelete (id) {
-      // Handle delete action
-      console.log(`Deleting product with id ${id}`)
+    deleteProduct (id) {
+      ProductDataService.delete(id)
+        .then(response => {
+          this.removeInv(id)
+        })
+        .catch((e) => {
+          this.message = e.response?.data?.message || 'An error occurred'
+        })
     }
   }
 }

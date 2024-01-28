@@ -5,14 +5,15 @@
         </div>
         <div className="products" v-else >
             <SingleProduct v-for="(product, key, i) in inventory" :key="i"
-            :product = 'product'/>
+            :product = 'product'
+            :removeInv = 'removeInv'/>
         </div>
     </div>
 </template>
 <script>
 import SingleProduct from '@/components/SingleProduct.vue'
 export default {
-  props: ['inventory'],
+  props: ['inventory', 'removeInv'],
   components: {
     SingleProduct
   }
