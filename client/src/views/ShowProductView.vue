@@ -8,7 +8,7 @@
             </header>
             <div v-if="product">
                 <h3>{{ product.name }}</h3>
-                <p class='price'>{{ product.price.toFixed(2) }}</p>
+                <p class='price'>{{ parseFloat(product.price.toFixed(2)) }}</p>
                 <p class='description'> {{ product.description }} </p>
                 <!-- Other product details -->
                 <footer>

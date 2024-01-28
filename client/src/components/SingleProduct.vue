@@ -9,12 +9,12 @@
             </router-link>
 
             <!-- Delete product -->
-            <unicon name="multiply" class="icon" fill="lightgrey" @click="onDelete(product.id)"/>
+            <unicon name="multiply" class="icon" @click="onDelete(product.id)"/>
 
             <!-- Link to edit product page -->
-<!--             <router-link :to="{ name: 'edit-product', params: { id: product.id } }">
-                <unicon name="edit-alt" fill="royalblue" />
-            </router-link> -->
+            <router-link :to="{ name: 'editProduct', params: { id: product.id } }">
+                <unicon name="edit-alt" class="icon" />
+            </router-link>
         </div>
     </div>
 </template>

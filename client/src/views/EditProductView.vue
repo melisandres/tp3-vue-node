@@ -1,5 +1,100 @@
 <template>
-    <div>
-        <h1>meow</h1>
+    <div class="custom-modal-container">
+        <div class="modal">
+          <form>
+              <div>
+                  <label>Product</label>
+                  <input
+                  type='text'
+                  id="name"
+                  placeholder="Add Product"
+                  v-model="product.name"
+                  />
+              </div>
+              <div>
+                  <label>Price</label>
+                  <input
+                  type='number'
+                  placeholder="Add Price"
+                  v-model.number="product.price"
+                  />
+              </div>
+              <div>
+                  <label>Description</label>
+                  <textarea
+                      placeholder="Add Description"
+                      value={description}
+                      rows="4"
+                      cols="50"
+                      v-model="product.description"
+                  ></textarea>
+              </div>
+              <div>
+                  <label>Category</label>
+                  <input
+                  type='text'
+                  placeholder="Add Category"
+                  value={category}
+                  v-model="product.category"
+                  />
+              </div>
+              <input type="button" @click="updateProduct" value="update" class="modal-button white-text"/>
+          </form>
+      </div>
     </div>
-</template>
+  </template>
+
+<script>
+import ProductDataService from '@/services/ProductDataService'
+export default {
+  props: ['updateInv', 'inventory', 'removeInv', 'remove'],
+  data () {
+    return {
+      message: null,
+      submitted: false,
+      product: {},
+      id: parseInt(this.$route.params.id)
+    }
+  },
+  methods: {
+    updateProduct () {
+      ProductDataService.update(this.id, this.product)
+        .then(response => {
+          this.updateInv(this.productIndex, this.product)
+          this.submitted = true
+          this.message = null
+          // Open the single product view
+          this.$router.push({ name: 'showProduct', params: { id: this.product.id } })
+        })
+        .catch((e) => {
+          this.message = e.response.data.message
+        })
+    },
+    deleteProduct () {
+      ProductDataService.delete(this.id)
+        .then(response => {
+          this.removeInv(this.productIndex)
+          this.remove(this.product.name)
+          this.$router.push({ name: 'home' })
+        })
+        .catch((e) => {
+          this.message = e.response.data.message
+        })
+    }
+  },
+  computed: {
+    productIndex () {
+      const index = this.inventory.findIndex((p) => {
+        return p.id === this.id
+      })
+      return index
+    }
+  },
+  mounted () {
+    ProductDataService.get(this.id)
+      .then(response => {
+        this.product = response.data
+      })
+  }
+}
+</script>

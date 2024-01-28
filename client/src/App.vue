@@ -9,6 +9,9 @@
     </div>
     <router-view
     :inventory="inventory"
+    :addInv="addInventory"
+    :updateInv="updateInventory"
+    :removeInv="removeInventory"
     />
     <ProductsSection
     :inventory="inventory"/>
@@ -34,6 +37,21 @@ export default {
   data () {
     return {
       inventory: []
+    }
+  },
+  methods: {
+    addInventory (product) {
+      this.inventory.push(product)
+    },
+    updateInventory (index, data) {
+      this.inventory[index].name = data.name
+      this.inventory[index].photo = data.photo
+      this.inventory[index].price = data.price
+      this.inventory[index].description = data.description
+      this.inventory[index].type = data.type
+    },
+    removeInventory (index) {
+      this.inventory.splice(index, 1)
     }
   }
 }
