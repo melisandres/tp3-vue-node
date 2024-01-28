@@ -19,5 +19,9 @@ class ProductDataService {
   delete (id) {
     return http.delete(`/product/${id}`)
   }
+
+/*   uploadPhoto (data) {
+    return http.post('/uploadPhoto', data)
+  } */
 }
 export default new ProductDataService()

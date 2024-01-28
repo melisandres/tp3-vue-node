@@ -49,7 +49,7 @@ export default {
       this.inventory[index].photo = data.photo
       this.inventory[index].price = data.price
       this.inventory[index].description = data.description
-      this.inventory[index].type = data.type
+      this.inventory[index].category = data.category
     },
     removeInventory (id) {
       console.log('this id is ', id)

@@ -38,14 +38,22 @@
                 v-model="product.category"
                 />
             </div>
-            <div>
+            <label>Photo</label>
+            <select name="photo" v-model="product.photo">
+              <option disabled value="">Select a Photo</option>
+              <option value="dinning.jpeg">dinning</option>
+              <option value="experience.jpeg">experience</option>
+              <option value="play.jpeg">play</option>
+              <option value="work.jpeg">dinning</option>
+            </select>
+            <!-- <div>
               <label>Photo</label>
               <input
                 type="file"
                 accept="image/*"
                 @change="handleFileUpload"
               />
-            </div>
+            </div> -->
             <input type="button" @click="saveProduct" value="save" class="modal-button white-text"/>
         </form>
     </div>
@@ -61,12 +69,14 @@ export default {
         name: '',
         price: '',
         description: '',
-        category: ''
+        category: '',
+        photo: ''
       }
     }
   },
   methods: {
     saveProduct () {
+      // this.uploadPhoto()
       ProductDataService.create(this.product)
         .then((response) => {
           const newProductId = response.data.id
@@ -81,6 +91,28 @@ export default {
           console.error(e)
           this.message = e.response?.data?.message || 'An error occurred'
         })
+    },
+/*     uploadPhoto () {
+      // Create a FormData object to send only the photo
+      const formData = new FormData()
+      formData.append('photo', this.product.photo)
+
+      // Send the photo to the server
+      ProductDataService.uploadPhoto(formData)
+        .then((response) => {
+          // Update the product with the received filename
+          this.product.photo = response.data.filename
+        })
+        .catch((e) => {
+          console.error(e)
+          this.message = e.response?.data?.message || 'An error occurred'
+        })
+    }, */
+    handleFileUpload (event) {
+      // Access the selected file from the event
+      const file = event.target.files[0]
+      // Handle the file as needed (e.g., store it in a variable)
+      this.product.photo = file
     }
   }
 }
