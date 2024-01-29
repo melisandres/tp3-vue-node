@@ -56,13 +56,16 @@ footer{
   margin: 5px;
   border: rgb(114, 146, 177) 1px solid;
   background-color: white;
-  width: fit-content;
+  width: 172px;
   text-align: center;
   border-radius: 5px;
   overflow: hidden; /* Prevent content overflow */
+  position: relative;
+  /* //width: 100%; */
 }
 
 .product h3 {
+  z-index: 3;
   color: white;
   margin: 0;
   line-height: normal;
@@ -92,6 +95,7 @@ h3 {
   padding: 10px; /* Adjusted padding */
   display: flex;
   justify-content: space-between;
+  margin-top: 50px;
 }
 
 .price {
@@ -104,11 +108,11 @@ h3 {
   height: 70px;
   border-radius: 50px;
   border: rgba(211, 211, 211, 0.5) 2px solid;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
   transform: rotate(-15deg);
   position: relative;
   top: -30px;
-  color: grey;
+  color: #000000d9;
 }
 
 .price::after{
@@ -119,7 +123,7 @@ h3 {
 .product .icon{
   fill: rgb(227, 108, 155);
   font-size: 20px;
-  padding: 20px
+  padding: 10px
 }
 
 .product .icon:visited{
@@ -220,7 +224,7 @@ input[type="submit"]:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure the modal is on top of other content */
+  z-index: 3; /* Ensure the modal is on top of other content */
 }
 
 /* Modal Content */
@@ -229,16 +233,21 @@ input[type="submit"]:hover {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for a slight lift effect */
-  max-width: 400px; /* Adjust the width as needed */
-  width: 100%;
+  width: 570px;
   text-align: center;
 }
 .modal header{
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   margin: 10px;
   cursor: pointer;
 }
+
+.modal header div:only-child {
+  width: 100%;
+  text-align: end;
+}
+
 .modal {
   display: flex;
   flex-direction: column;
@@ -246,8 +255,7 @@ input[type="submit"]:hover {
   background-color: rgb(255, 255, 89);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  max-width: 70vw;
-  min-width: 50vw;
+  width: 570px;
   margin: 100px auto;
 }
 
@@ -270,6 +278,7 @@ input[type="submit"]:hover {
   display: block;
   padding: 10px;
   text-decoration: none;
+  margin-top:10px;
 
 }
 
@@ -281,4 +290,51 @@ input[type="submit"]:hover {
   font-size: 20px;
   font-weight: bold;
   color: white;
+}
+
+.price-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.price {
+  margin-bottom: 10px; /* Adjust as needed */
+  z-index: 1;
+}
+
+.image-container {
+  width: 100%;
+}
+
+.image-container img {
+  object-fit: cover;
+  position: absolute;
+
+  transform: translate(-50%, -50%);
+  display: block;
+}
+
+.single{
+  height: 150px;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+}
+
+.modal-image{
+  height: 200px;
+  width: 610px;
+  top: 46%;
+  left: 50%;
+}
+
+.photo-select{
+  margin-top: 30px;
+}
+label{
+  margin-top: 10px;
+  display: block;
 }

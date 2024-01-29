@@ -2,9 +2,11 @@
     <div class="custom-modal-container">
         <div class="modal">
         <header>
+          <div>
             <router-link to="/">
                 <unicon name="multiply" fill="lightgrey" class="close-modal"/>
             </router-link>
+          </div>
         </header>
           <form>
               <div>
@@ -43,10 +45,20 @@
                   v-model="product.category"
                   />
               </div>
+              <div class="photo-select">
+                <label>Photo</label>
+                <select name="photo" v-model="product.photo">
+                  <option disabled value="">Select a Photo</option>
+                  <option value="dinning.jpeg">dinning</option>
+                  <option value="experience.jpeg">experience</option>
+                  <option value="play.jpeg">play</option>
+                  <option value="work.jpeg">work</option>
+                </select>
+              </div>
               <input type="button" @click="updateProduct" value="update" class="modal-button white-text"/>
           </form>
           <hr/>
-          <div class='info'>
+          <!-- <div class='info'>
               <h5>previously saved product information:</h5>
               <h4>
                   {{ product.name }}
@@ -57,7 +69,7 @@
               <p>
                   {{ product.description }}
               </p>
-          </div>
+          </div> -->
       </div>
     </div>
   </template>

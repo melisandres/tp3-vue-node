@@ -1,7 +1,12 @@
 <template>
     <div class='product'>
-        <h3>{{ product.name }}</h3>
-        <p class="price">{{ product.price.toFixed(2)}}</p>
+        <h3 class="title">{{ product.name }}</h3>
+        <div class="image-container">
+          <p class="price">{{ product.price.toFixed(2)}}</p>
+          <picture class="image-container single">
+            <img class="single" v-if="product.photo" :src="require(`@/assets/imgs/${product.photo}`)" :alt="product.name" />
+          </picture>
+        </div>
         <div class="actions">
             <!-- Link to product details page -->
             <router-link :to="{ name: 'showProduct', params: { id: product.id } }">

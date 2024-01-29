@@ -1,6 +1,13 @@
 <template>
   <div class="custom-modal-container">
       <div class="modal">
+        <header>
+          <div>
+            <router-link to="/">
+                <unicon name="multiply" fill="lightgrey" class="close-modal"/>
+            </router-link>
+          </div>
+        </header>
         <form>
             <div>
                 <label>Product</label>
@@ -38,6 +45,7 @@
                 v-model="product.category"
                 />
             </div>
+            <div class="photo-select">
             <label>Photo</label>
             <select name="photo" v-model="product.photo">
               <option disabled value="">Select a Photo</option>
@@ -46,6 +54,7 @@
               <option value="play.jpeg">play</option>
               <option value="work.jpeg">dinning</option>
             </select>
+          </div>
             <!-- <div>
               <label>Photo</label>
               <input

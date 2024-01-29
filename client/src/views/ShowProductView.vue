@@ -2,13 +2,22 @@
     <div class="custom-modal-container">
         <div class="modal">
             <header>
+              <div v-if="product">
+                <h3>{{ product.name }}</h3>
+              </div>
                 <router-link to="/">
                     <unicon name="multiply" fill="lightgrey" class="close-modal"/>
                 </router-link>
             </header>
             <div v-if="product">
                 <h3>{{ product.name }}</h3>
-                <p class='price'>{{ parseFloat(product.price.toFixed(2)) }}</p>
+                <div class="image-container">
+                  <p class="price">{{ product.price.toFixed(2)}}</p>
+                  <picture class="image-container">
+                    <img class="modal-image" v-if="product.photo" :src="require(`@/assets/imgs/${product.photo}`)" :alt="product.name" />
+                  </picture>
+                </div>
+                <!-- <p class='price'>{{ parseFloat(product.price.toFixed(2)) }}</p> -->
                 <p class='description'> {{ product.description }} </p>
                 <!-- Other product details -->
                 <footer>
