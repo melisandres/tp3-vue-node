@@ -48,7 +48,7 @@
             <div class="photo-select">
             <label>Photo</label>
             <select name="photo" v-model="product.photo">
-              <option disabled value="">Select a Photo</option>
+              <option selected value="bookplane.jpeg">Select a Photo</option>
               <option value="dinning.jpeg">dinning</option>
               <option value="experience.jpeg">experience</option>
               <option value="play.jpeg">play</option>
