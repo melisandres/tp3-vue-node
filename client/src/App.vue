@@ -13,6 +13,7 @@
     :updateInv="updateInventory"
     :removeInv="removeInventory"
     />
+    <MainFooter/>
   </div>
 </template>
 

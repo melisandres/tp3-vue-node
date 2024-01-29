@@ -91,7 +91,6 @@ h3 {
   padding: 20px;
 }
 
-
 .product > .actions {
   padding: 10px; /* Adjusted padding */
   display: flex;
@@ -120,6 +119,9 @@ h3 {
   content: "$"
 }
 
+.icon{
+  cursor: pointer;
+}
 
 .product .icon{
   fill: rgb(227, 108, 155);
@@ -338,4 +340,9 @@ input[type="submit"]:hover {
 label{
   margin-top: 10px;
   display: block;
+}
+
+.page-footer{
+  margin-top: 100px;
+  margin-bottom: 50px;
 }

@@ -109,7 +109,7 @@ export default {
           this.message = e.response?.data?.message || 'An error occurred'
         })
     },
-/*     uploadPhoto () {
+    /*     uploadPhoto () {
       // Create a FormData object to send only the photo
       const formData = new FormData()
       formData.append('photo', this.product.photo)
