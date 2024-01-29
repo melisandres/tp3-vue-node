@@ -67,11 +67,19 @@
         </form>
     </div>
   </div>
+  <ProductsSection
+    :inventory="inventory"
+    :removeInv="removeInventory"/>
+  <MainFooter/>
 </template>
 <script>
 import ProductDataService from '@/services/ProductDataService'
+import ProductsSection from '@/components/ProductsSection.vue'
 export default {
-  props: ['addInv'],
+  props: ['addInv', 'inventory'],
+  components: {
+    ProductsSection
+  },
   data () {
     return {
       product: {

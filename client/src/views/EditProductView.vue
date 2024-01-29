@@ -72,12 +72,19 @@
           </div> -->
       </div>
     </div>
+    <ProductsSection
+    :inventory="inventory"
+    :removeInv="removeInventory"/>
   </template>
 
 <script>
 import ProductDataService from '@/services/ProductDataService'
+import ProductsSection from '@/components/ProductsSection.vue'
 export default {
   props: ['updateInv', 'inventory', 'removeInv', 'remove'],
+  components: {
+    ProductsSection
+  },
   data () {
     return {
       message: null,

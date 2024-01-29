@@ -2,9 +2,9 @@
   <div>
     <div>
       <nav className="nav">
-        <router-link to="/" class="nav-link">Products</router-link>
-        <router-link to="/about" class="nav-link">About</router-link>
+        <router-link to="/" class="nav-link">Home</router-link>
         <router-link to="/create" class="nav-link">Add Product</router-link>
+        <router-link to="/about" class="nav-link">About</router-link>
       </nav>
     </div>
     <router-view
@@ -13,21 +13,15 @@
     :updateInv="updateInventory"
     :removeInv="removeInventory"
     />
-    <ProductsSection
-    :inventory="inventory"
-    :removeInv="removeInventory"/>
-    <MainFooter/>
   </div>
 </template>
 
 <script>
 import MainFooter from '@/components/MainFooter.vue'
-import ProductsSection from '@/components/ProductsSection.vue'
 import ProductDataService from '@/services/ProductDataService'
 export default {
   components: {
-    MainFooter,
-    ProductsSection
+    MainFooter
   },
   mounted () {
     ProductDataService.getAll()

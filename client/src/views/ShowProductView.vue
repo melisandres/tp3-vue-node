@@ -30,11 +30,18 @@
             </div>
         </div>
     </div>
+    <ProductsSection
+    :inventory="inventory"
+    :removeInv="removeInventory"/>
 </template>
 <script>
 import ProductDataService from '@/services/ProductDataService'
+import ProductsSection from '@/components/ProductsSection.vue'
 export default {
   props: ['inventory', 'removeInv'],
+  components: {
+    ProductsSection
+  },
   data () {
     return {
       id: parseInt(this.$route.params.id)
